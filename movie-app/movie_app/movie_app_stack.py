@@ -1,11 +1,9 @@
 from constructs import Construct
 from aws_cdk import (
-    Duration,
     Stack,
+    aws_s3 as s3,
+    aws_lambda as _lambda,
     aws_iam as iam,
-    aws_sqs as sqs,
-    aws_sns as sns,
-    aws_sns_subscriptions as subs,
 )
 
 
@@ -14,13 +12,5 @@ class MovieAppStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        queue = sqs.Queue(
-            self, "MovieAppQueue",
-            visibility_timeout=Duration.seconds(300),
-        )
-
-        topic = sns.Topic(
-            self, "MovieAppTopic"
-        )
-
-        topic.add_subscription(subs.SqsSubscription(queue))
+        # Create an S3 bucket
+        bucket = s3.Bucket(self, "MyBucket")
