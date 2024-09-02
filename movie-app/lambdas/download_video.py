@@ -1,7 +1,7 @@
 import os
-import json
-import boto3
 import base64
+import boto3
+import json
 
 def handler(event, context):
     s3_client = boto3.client('s3')

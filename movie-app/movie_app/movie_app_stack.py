@@ -39,7 +39,8 @@ class MovieAppStack(Stack):
 
         # Create API Gateway with binary media types
         api = apigateway.RestApi(self, "MovieApi",
-            binary_media_types=["video/mp4"]  # Ensure this matches the media type in Lambda
+            rest_api_name="Movie Service",
+            binary_media_types=["video/mp4"],  # Define the media type to handle binary data
         )
 
         upload_integration = apigateway.LambdaIntegration(upload_lambda)
@@ -47,3 +48,4 @@ class MovieAppStack(Stack):
 
         api.root.add_resource("upload").add_method("POST", upload_integration)
         api.root.add_resource("download").add_method("GET", download_integration)
+
