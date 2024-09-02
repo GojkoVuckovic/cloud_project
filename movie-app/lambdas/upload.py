@@ -1,11 +1,12 @@
+import boto3
 import os
 import base64
-import boto3
 import json
 
+s3_client = boto3.client('s3')
+bucket_name = os.environ['BUCKET_NAME']
+
 def handler(event, context):
-    s3_client = boto3.client('s3')
-    bucket_name = os.environ['BUCKET_NAME']
     
     # Decode base64-encoded binary data
     video_data = event['body']
@@ -13,7 +14,7 @@ def handler(event, context):
         video_data = base64.b64decode(video_data)
     
     # Generate a unique file name or use a specific naming scheme
-    video_name = event['queryStringParameters'].get('file', 'default_video.mp4')
+    video_name = event['queryStringParameters'].get('file_name', 'default_video.mp4')
 
     try:
         # Upload the video object to S3
