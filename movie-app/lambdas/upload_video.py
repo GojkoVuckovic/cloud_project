@@ -7,12 +7,12 @@ def handler(event, context):
     s3_client = boto3.client('s3')
     bucket_name = os.environ['BUCKET_NAME']
     
-    # Decode base64-encoded binary data if necessary
+    # Decode base64-encoded binary data
     video_data = event['body']
     if event.get('isBase64Encoded', False):
         video_data = base64.b64decode(video_data)
     
-    # Extract file name from query string parameters or provide a default
+    # Generate a unique file name or use a specific naming scheme
     video_name = event['queryStringParameters'].get('file', 'default_video.mp4')
 
     try:
@@ -21,7 +21,7 @@ def handler(event, context):
         
         return {
             'statusCode': 200,
-            'body': 'Upload successful'
+            'body': json.dumps({'message': 'Upload successful'})
         }
     except Exception as e:
         return {
