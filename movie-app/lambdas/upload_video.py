@@ -1,21 +1,27 @@
 import os
-import json
+import base64
 import boto3
-import random
-import string
-
+import json
 
 def handler(event, context):
-    video_name = file_name = ''.join(random.choices(string.ascii_letters + string.digits, k=10)) + ".mp4"
-    video_data = event['body']
     s3_client = boto3.client('s3')
     bucket_name = os.environ['BUCKET_NAME']
+    
+    # Decode base64-encoded binary data if necessary
+    video_data = event['body']
+    if event.get('isBase64Encoded', False):
+        video_data = base64.b64decode(video_data)
+    
+    # Extract file name from query string parameters or provide a default
+    video_name = event['queryStringParameters'].get('file', 'default_video.mp4')
+
     try:
-        s3_client.put_object(Bucket=bucket_name, Key=video_name, Body=video_data, ContentType='video/mp4')
+        # Upload the video object to S3
+        s3_client.put_object(Bucket=bucket_name, Key=video_name, Body=video_data)
+        
         return {
             'statusCode': 200,
-            'body': json.dumps({'message': 'Video uploaded successfully',
-                                'videoName': video_name})
+            'body': 'Upload successful'
         }
     except Exception as e:
         return {
