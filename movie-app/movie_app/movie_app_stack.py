@@ -76,7 +76,7 @@ class MovieAppStack(Stack):
 
         api = apigateway.RestApi(self, "MovieApi",
             rest_api_name="Movie Service",
-            binary_media_types=["video/mp4"],
+            binary_media_types=["*/*"],
         )
 
         upload_integration = apigateway.LambdaIntegration(upload_lambda)
