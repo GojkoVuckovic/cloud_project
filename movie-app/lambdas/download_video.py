@@ -8,11 +8,15 @@ def handler(event, context):
     bucket_name = os.environ['BUCKET_NAME']
     
     # Extract the file name from query string parameters
-    video_name = event['queryStringParameters'].get('file', '')
+    file_name = event['queryStringParameters'].get('file-name', '')
+    format = event['queryStringParameters'].get('format', 'original')  # Default to 'original' if no format is specified
+
+    # Generate the key for the specific format
+    key = f'{format}/{file_name}' if format != 'original' else file_name
 
     try:
         # Retrieve the video object from S3
-        response = s3_client.get_object(Bucket=bucket_name, Key=video_name)
+        response = s3_client.get_object(Bucket=bucket_name, Key=key)
         video_data = response['Body'].read()
         
         # Encode binary data to base64
