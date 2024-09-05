@@ -14,6 +14,9 @@ transcoding_queue_url = os.environ['TRANSCODE_QUEUE_URL']
 metadata_table_name = os.environ['METADATA_TABLE_NAME']
 metadata_table = dynamodb.Table(metadata_table_name)
 
+s3_client = boto3.client('s3')
+bucket_name = os.environ['BUCKET_NAME']
+
 def handler(event, context):
     try:
         video_data = event['body']
