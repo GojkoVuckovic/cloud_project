@@ -33,7 +33,6 @@ class MovieAppStack(Stack):
             removal_policy=RemovalPolicy.DESTROY
         )
 
-
         upload_lambda = _lambda.Function(self, "UploadVideoFunction",
             runtime=_lambda.Runtime.PYTHON_3_8,
             handler="upload_video.handler",
@@ -54,6 +53,14 @@ class MovieAppStack(Stack):
             }
         )
 
+        # Define the Lambda layer with FFmpeg
+        ffmpeg_layer = _lambda.LayerVersion(self, "FFmpegLayer",
+            code=_lambda.Code.from_asset("layer/ffmpeg"),
+            compatible_runtimes=[_lambda.Runtime.PYTHON_3_8],
+            description="A layer that contains FFmpeg binary",
+        )
+
+
         transcode_lambda = _lambda.Function(self, "TranscodeVideoFunction",
             runtime=_lambda.Runtime.PYTHON_3_8,
             handler="transcode_video.handler",
@@ -61,7 +68,10 @@ class MovieAppStack(Stack):
             environment={
                 "BUCKET_NAME": bucket.bucket_name,
                 "TABLE_NAME": table.table_name
-            }
+            },
+            layers=[ffmpeg_layer],
+            timeout=Duration.minutes(10),
+            memory_size=512
         )
 
         bucket.grant_read_write(upload_lambda)
