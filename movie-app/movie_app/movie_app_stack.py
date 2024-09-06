@@ -41,7 +41,9 @@ class MovieAppStack(Stack):
                 "BUCKET_NAME": bucket.bucket_name,
                 "METADATA_TABLE_NAME": table.table_name,
                 "TRANSCODE_QUEUE_URL": transcoding_queue.queue_url
-            }
+            },
+            timeout=Duration.minutes(5),
+            memory_size=256
         )
 
         download_lambda = _lambda.Function(self, "DownloadVideoFunction",
