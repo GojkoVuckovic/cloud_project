@@ -6,6 +6,6 @@ from movie_app.movie_app_stack import MovieAppStack
 
 
 app = cdk.App()
-MovieAppStack(app, "MovieAppStack")
+video_stack = MovieAppStack(app, "MovieAppStack")
 
 app.synth()
