@@ -2,10 +2,10 @@
 
 import aws_cdk as cdk
 
-from movie_app.movie_app_stack import MovieAppStack
+from movie_app.new_stack import NewStack
 
 
 app = cdk.App()
-video_stack = MovieAppStack(app, "MovieAppStack")
+video_stack = NewStack(app, "NewStack")
 
 app.synth()

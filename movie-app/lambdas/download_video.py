@@ -1,7 +1,6 @@
 import os
 import boto3
 import json
-import base64
 
 def handler(event, context):
     s3_client = boto3.client('s3')
@@ -9,22 +8,20 @@ def handler(event, context):
     
     # Extract the file name from query string parameters
     video_name = event['queryStringParameters'].get('file', '')
+    print(f"Bucket name: {bucket_name}, Video name: {video_name}")
 
     try:
-        # Retrieve the video object from S3
-        response = s3_client.get_object(Bucket=bucket_name, Key=video_name)
-        video_data = response['Body'].read()
-
-        # Encode binary data to Base64
-        base64_encoded_video = base64.b64encode(video_data).decode('utf-8')
+        # Generate a presigned URL for the video object in S3
+        url = s3_client.generate_presigned_url('get_object',
+                                               Params={'Bucket': bucket_name, 'Key': video_name},
+                                               ExpiresIn=3600)  # URL expires in 1 hour
 
         return {
             'statusCode': 200,
-            'body': base64_encoded_video,  # Base64 encoded string
-            'isBase64Encoded': True,  # Indicates that the body is Base64 encoded
+            'body': url,
             'headers': {
-                'Content-Type': 'video/mp4',  # Adjust if needed
-                'Content-Disposition': f'attachment; filename="{video_name}"'
+                'Content-Type': 'text/plain',  # The URL is returned as plain text
+                'Content-Disposition': 'inline'
             }
         }
     except Exception as e:
