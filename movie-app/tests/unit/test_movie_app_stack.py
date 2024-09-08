@@ -1,6 +1,6 @@
 import aws_cdk as core
 import aws_cdk.assertions as assertions
-from movie_app.movie_app_stack import MovieAppStack
+from movie_app.video_app_stack import MovieAppStack
 
 
 def test_sqs_queue_created():
