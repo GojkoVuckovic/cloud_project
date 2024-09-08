@@ -1,10 +1,14 @@
 from aws_cdk import (
+    Duration,
     Stack,
     aws_s3 as s3,
     aws_lambda as _lambda,
     aws_apigateway as apigateway,
     aws_iam as iam,
-    RemovalPolicy
+    RemovalPolicy,
+    aws_sqs as sqs,
+    aws_s3_notifications as s3n,
+    aws_lambda_event_sources as lambda_event_sources
 )
 from constructs import Construct
 
@@ -23,6 +27,16 @@ class VideoAppStack(Stack):
                                      allowed_headers=["*"]
                                  )]
                                 )
+
+
+        # SQS Queue for transcoding tasks
+        transcoding_queue = sqs.Queue(self, 
+                                      "TranscodingQueue", 
+                                      visibility_timeout=Duration.minutes(10))
+
+
+                # Create Lambda function to trigger transcoding jobs
+        
 
         # 2. Create Upload Lambda function
         upload_lambda = _lambda.Function(self, 
@@ -43,10 +57,37 @@ class VideoAppStack(Stack):
                                            environment={
                                                "BUCKET_NAME": video_bucket.bucket_name
                                            })
+        process_upload_lambda = _lambda.Function(self, 
+                                                 "ProcessUploadLambda",
+                                                 runtime=_lambda.Runtime.PYTHON_3_9,
+                                                 handler="process_uploaded_video.handler",
+                                                 code=_lambda.Code.from_asset("lambdas"),
+                                                 environment={
+                                                     "SQS_QUEUE_URL": transcoding_queue.queue_url,
+                                                     "BUCKET_NAME": video_bucket.bucket_name
+                                                 })
+
+        # Define the Lambda layer with FFmpeg
+        ffmpeg_layer = _lambda.LayerVersion(self, "FFmpegLayer",
+            code=_lambda.Code.from_asset("layer/ffmpeg"),
+            compatible_runtimes=[_lambda.Runtime.PYTHON_3_9],
+            description="A layer that contains FFmpeg binary",
+        )
+
+        transcode_lambda = _lambda.Function(self, "TranscodeVideoFunction",
+            runtime=_lambda.Runtime.PYTHON_3_9,
+            handler="transcode_video.handler",
+            code=_lambda.Code.from_asset("lambdas"),
+            environment={
+                "BUCKET_NAME": video_bucket.bucket_name
+            },
+            layers=[ffmpeg_layer],
+            timeout=Duration.minutes(10),
+            memory_size=1024
+        )
 
         # 4. Grant permissions to Lambda functions to access S3 bucket
-        video_bucket.grant_read_write(upload_lambda)
-        video_bucket.grant_read(download_lambda)
+        
 
         # 5. API Gateway setup
         api = apigateway.RestApi(self, 
@@ -60,3 +101,18 @@ class VideoAppStack(Stack):
 
         download_resource = api.root.add_resource("download")
         download_resource.add_method("GET", apigateway.LambdaIntegration(download_lambda))
+
+        notification = s3n.LambdaDestination(process_upload_lambda)
+        video_bucket.add_event_notification(s3.EventType.OBJECT_CREATED, notification)
+
+        transcode_lambda.add_event_source(lambda_event_sources.SqsEventSource(transcoding_queue))
+
+        video_bucket.grant_read_write(upload_lambda)
+        video_bucket.grant_read(download_lambda)
+        video_bucket.grant_read_write(process_upload_lambda)
+        video_bucket.grant_read_write(transcode_lambda)
+
+        transcoding_queue.grant_send_messages(process_upload_lambda)
+        transcoding_queue.grant_consume_messages(process_upload_lambda)
+        transcoding_queue.grant_send_messages(transcode_lambda)
+        transcoding_queue.grant_consume_messages(transcode_lambda)
