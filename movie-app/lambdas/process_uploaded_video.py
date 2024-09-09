@@ -30,7 +30,6 @@ def handler(event, context):
         metadata_table.put_item(
             Item={
                 'video_id': video_id,
-                'file_key': file_key,
                 'file_size': file_size,
                 'last_modified': str(last_modified),
             }

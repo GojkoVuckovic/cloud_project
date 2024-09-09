@@ -10,7 +10,7 @@ bucket_name = os.environ['BUCKET_NAME']
 def handler(event, context):
     try:
         video_id = str(uuid.uuid4())
-        file_name = f"{video_id}.mp4"
+        file_name = f"{video_id}"
 
         presigned_url = s3_client.generate_presigned_url(
             'put_object',

@@ -50,16 +50,6 @@ class VideoAppStack(Stack):
             }
         )
 
-        # Lambda for updating metadata separately
-        update_metadata_lambda = _lambda.Function(self, 
-            "UpdateMetadataLambda",
-            runtime=_lambda.Runtime.PYTHON_3_9,
-            handler="update_metadata.handler",
-            code=_lambda.Code.from_asset("lambdas"),
-            environment={
-                "METADATA_TABLE": metadata_table.table_name
-            }
-        )
 
         # 2. Create Upload Lambda function
         upload_lambda = _lambda.Function(self, 
@@ -129,7 +119,7 @@ class VideoAppStack(Stack):
 
         # Create /metadata endpoint for adding metadata separately
         metadata_resource = api.root.add_resource("metadata")
-        metadata_resource.add_method("POST", apigateway.LambdaIntegration(update_metadata_lambda))
+        metadata_resource.add_method("POST", apigateway.LambdaIntegration(metadata_lambda))
 
         notification = s3n.LambdaDestination(process_upload_lambda)
         video_bucket.add_event_notification(s3.EventType.OBJECT_CREATED, notification)
@@ -149,5 +139,5 @@ class VideoAppStack(Stack):
 
         # Grant permissions to read/write from the DynamoDB table
         metadata_table.grant_read_write_data(process_upload_lambda)
-        metadata_table.grant_write_data(update_metadata_lambda)
+        metadata_table.grant_write_data(metadata_lambda)
         metadata_table.grant_read_write_data(metadata_lambda)
