@@ -31,10 +31,9 @@ def handler(event, context):
         print(f"Transcoding {file_key} to {format} with width {width} in bucket: {bucket_name}")
 
         # Extract file name without extension
-        video_id, file_extension = os.path.splitext(file_key)
 
-        new_input_key = f"{video_id}_input_{format}{file_extension}"
-        new_output_key = f"{video_id}_output_{format}{file_extension}"
+        new_input_key = f"{timestamp}_{file_key}_input_{format}"
+        new_output_key = f"{timestamp}_{file_key}_output_{format}.mp4"
 
 
 
@@ -70,7 +69,7 @@ def handler(event, context):
             print(f"Transcoded {file_key} to {local_output_path} with resolution {format}")
 
             # Upload the transcoded video back to S3
-            transcoded_file_name = f"{format}/{video_id}{file_extension}"
+            transcoded_file_name = f"{format}/{file_key}"
             s3_client.upload_file(local_output_path, bucket_name, transcoded_file_name)
 
         except subprocess.CalledProcessError as e:

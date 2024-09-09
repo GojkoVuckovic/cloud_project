@@ -8,7 +8,8 @@ from aws_cdk import (
     RemovalPolicy,
     aws_sqs as sqs,
     aws_s3_notifications as s3n,
-    aws_lambda_event_sources as lambda_event_sources
+    aws_lambda_event_sources as lambda_event_sources,
+    aws_dynamodb as dynamodb
 )
 from constructs import Construct
 
@@ -28,15 +29,27 @@ class VideoAppStack(Stack):
                                  )]
                                 )
 
-
         # SQS Queue for transcoding tasks
         transcoding_queue = sqs.Queue(self, 
                                       "TranscodingQueue", 
                                       visibility_timeout=Duration.minutes(10))
 
+        metadata_table = dynamodb.Table(self, "MetadataTable",
+            partition_key=dynamodb.Attribute(name="video_id", type=dynamodb.AttributeType.STRING),
+            removal_policy=RemovalPolicy.DESTROY  # Adjust as needed
+        )
 
-                # Create Lambda function to trigger transcoding jobs
-        
+        # Add the table name to Lambda environment variables
+        metadata_lambda = _lambda.Function(self, 
+            "MetadataLambda",
+            runtime=_lambda.Runtime.PYTHON_3_9,
+            handler="upload_metadata.handler",
+            code=_lambda.Code.from_asset("lambdas"),
+            environment={
+                "METADATA_TABLE": metadata_table.table_name
+            }
+        )
+
 
         # 2. Create Upload Lambda function
         upload_lambda = _lambda.Function(self, 
@@ -57,6 +70,8 @@ class VideoAppStack(Stack):
                                            environment={
                                                "BUCKET_NAME": video_bucket.bucket_name
                                            })
+
+        # Process the uploaded video
         process_upload_lambda = _lambda.Function(self, 
                                                  "ProcessUploadLambda",
                                                  runtime=_lambda.Runtime.PYTHON_3_9,
@@ -64,7 +79,8 @@ class VideoAppStack(Stack):
                                                  code=_lambda.Code.from_asset("lambdas"),
                                                  environment={
                                                      "SQS_QUEUE_URL": transcoding_queue.queue_url,
-                                                     "BUCKET_NAME": video_bucket.bucket_name
+                                                     "BUCKET_NAME": video_bucket.bucket_name,
+                                                     "METADATA_TABLE": metadata_table.table_name
                                                  })
 
         # Define the Lambda layer with FFmpeg
@@ -88,25 +104,29 @@ class VideoAppStack(Stack):
 
         # 4. Grant permissions to Lambda functions to access S3 bucket
         
-
-        # 5. API Gateway setup
+        # API Gateway setup
         api = apigateway.RestApi(self, 
                                  "VideoApi",
                                  rest_api_name="Video Service API",
                                  description="API for uploading and downloading videos")
 
-        # 6. Create /upload and /download endpoints
+        # Create /upload and /download endpoints
         upload_resource = api.root.add_resource("upload")
         upload_resource.add_method("GET", apigateway.LambdaIntegration(upload_lambda))
 
         download_resource = api.root.add_resource("download")
         download_resource.add_method("GET", apigateway.LambdaIntegration(download_lambda))
 
+        # Create /metadata endpoint for adding metadata separately
+        metadata_resource = api.root.add_resource("metadata")
+        metadata_resource.add_method("POST", apigateway.LambdaIntegration(metadata_lambda))
+
         notification = s3n.LambdaDestination(process_upload_lambda)
         video_bucket.add_event_notification(s3.EventType.OBJECT_CREATED, notification)
 
         transcode_lambda.add_event_source(lambda_event_sources.SqsEventSource(transcoding_queue))
 
+        # Grant access to necessary resources
         video_bucket.grant_read_write(upload_lambda)
         video_bucket.grant_read(download_lambda)
         video_bucket.grant_read_write(process_upload_lambda)
@@ -116,3 +136,8 @@ class VideoAppStack(Stack):
         transcoding_queue.grant_consume_messages(process_upload_lambda)
         transcoding_queue.grant_send_messages(transcode_lambda)
         transcoding_queue.grant_consume_messages(transcode_lambda)
+
+        # Grant permissions to read/write from the DynamoDB table
+        metadata_table.grant_read_write_data(process_upload_lambda)
+        metadata_table.grant_write_data(metadata_lambda)
+        metadata_table.grant_read_write_data(metadata_lambda)
