@@ -33,8 +33,8 @@ def handler(event, context):
         # Extract file name without extension
         video_id, file_extension = os.path.splitext(file_key)
 
-        new_input_key = f"{video_id}_input_{format}{file_extension}"
-        new_output_key = f"{video_id}_output_{format}{file_extension}"
+        new_input_key = f"{timestamp}_{video_id}_input_{format}{file_extension}"
+        new_output_key = f"{timestamp}_{video_id}_output_{format}{file_extension}"
 
 
 
