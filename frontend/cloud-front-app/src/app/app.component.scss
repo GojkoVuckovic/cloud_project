@@ -1,0 +1,41 @@
+@use '@angular/material' as mat;
+
+#page-holder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+#content-holder{
+  margin-top: max(5vh, 75px);
+  flex: 1 1 auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+#inner-holder {
+  width: 80%;
+  height: 100%;
+
+  // TODO: Set right colours
+  background-color: #FDF5EC;
+  @media (prefers-color-scheme: dark) {
+    background-color: #171123;
+  }
+  position: relative;
+}
+
+#inner-holder:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 50px #FDF5EC;
+  @media (prefers-color-scheme: dark) {
+    box-shadow: 0 0 50px #171123;
+  }
+}

@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+  <div id="logo-container" *ngIf="userRole!=''" [routerLink]="'/'" >
+    <div id="home-container">Home</div>
+  </div>
+  <div class="buttons-container">
+    <button mat-button *ngIf="userRole==''" [routerLink]="'/login'" >Log in</button>
+    <button mat-button *ngIf="userRole==''" [routerLink]="'/register'">Register</button>
+    <button mat-button *ngIf="userRole!=''" (click)="logout();">Logout</button>
+  </div>
+</mat-toolbar>
