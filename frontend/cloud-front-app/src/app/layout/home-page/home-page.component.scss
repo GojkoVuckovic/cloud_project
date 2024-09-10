@@ -4,10 +4,19 @@
   padding-bottom: 5vh;
   display: block;
 }
-
+mat-icon{
+  color: white;
+}
+mat-label{
+  color: white;
+}
+::ng-deep .locationInput {
+  color: white !important;
+}
 .example-full-width {
   width: 50%;
   padding-left: 1rem;
+  color: white;
 }
 .search-form {
   display: flex;
