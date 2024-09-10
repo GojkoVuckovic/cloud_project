@@ -1,4 +1,4 @@
 export const environments={
-  cognitoUserPoolId: 'eu-central-1_FvcERznJ7',
-  cognitoAppClientId: '58plshtikph1ts98j08tu6gbdu'
+  cognitoUserPoolId: 'eu-central-1_sOG6Lo3ut',
+  cognitoAppClientId: '6pi8ofkh54dm8tbl7tkk7jnuu2'
 };

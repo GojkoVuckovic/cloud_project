@@ -43,14 +43,9 @@ export class AuthenticationService {
         this.cognitoUser = cognitoUser;
 
         const payload = this.cognitoUser.getSignInUserSession().getIdToken().decodePayload();
-        const role = payload['custom:isAdmin'];
-        if (role == "true") {
-          localStorage.setItem('userRole', "Admin");
-          this.userRole$.next("Admin");
-        } else if (role == "false") {
-          localStorage.setItem('userRole', "User");
-          this.userRole$.next("User");
-        }
+        const role = payload['cognito:groups'][0];
+        if(role) localStorage.setItem('userRole', role);
+        this.userRole$.next(role);
 
 
         this.getUsersAttributes(this.cognitoUser).then((userAttributes: CognitoUserAttribute[]) => {

@@ -32,7 +32,4 @@ export class RegisterComponent {
     )
   }
 
-  register(){
-
-  }
 }
