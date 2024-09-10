@@ -1,0 +1,1649 @@
+{
+  "version": "36.0.0",
+  "artifacts": {
+    "CloudMoviesStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "CloudMoviesStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "CloudMoviesStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "CloudMoviesStack.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/832ab907bdd5f6e3a33955734a2a57dac2905cf51c152855c6d3ed19bc489caf.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "CloudMoviesStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "CloudMoviesStack.assets"
+      ],
+      "metadata": {
+        "/CloudMoviesStack/videosTable/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "videosTableBCC40D2B"
+          }
+        ],
+        "/CloudMoviesStack/subscriptionsTable/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "subscriptionsTable99FE4D04"
+          }
+        ],
+        "/CloudMoviesStack/ratingTable/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ratingTable2AEECFA5"
+          }
+        ],
+        "/CloudMoviesStack/feedsTable/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "feedsTable2B322F8D"
+          }
+        ],
+        "/CloudMoviesStack/sourceBucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "sourceBucket5C83C9D6"
+          }
+        ],
+        "/CloudMoviesStack/sourceBucket/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "sourceBucketPolicy092C54A0"
+          }
+        ],
+        "/CloudMoviesStack/sourceBucket/AutoDeleteObjectsCustomResource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "sourceBucketAutoDeleteObjectsCustomResource3D0E709A"
+          }
+        ],
+        "/CloudMoviesStack/sourceBucket/Notifications/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "sourceBucketNotificationsBE50106E"
+          }
+        ],
+        "/CloudMoviesStack/sourceBucket/AllowBucketNotificationsToCloudMoviesStackunzipvideolambdaLambda3195A805": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "sourceBucketAllowBucketNotificationsToCloudMoviesStackunzipvideolambdaLambda3195A8053287CEBE"
+          }
+        ],
+        "/CloudMoviesStack/sourceBucket/AllowBucketNotificationsToCloudMoviesStackstarttranscodinglambdaLambdaC265D889": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "sourceBucketAllowBucketNotificationsToCloudMoviesStackstarttranscodinglambdaLambdaC265D889906D2F50"
+          }
+        ],
+        "/CloudMoviesStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092"
+          }
+        ],
+        "/CloudMoviesStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Handler": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F"
+          }
+        ],
+        "/CloudMoviesStack/publishBucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "publishBucketBD758787"
+          }
+        ],
+        "/CloudMoviesStack/publishBucket/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "publishBucketPolicy5C827AF8"
+          }
+        ],
+        "/CloudMoviesStack/publishBucket/AutoDeleteObjectsCustomResource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "publishBucketAutoDeleteObjectsCustomResource33BC1DDE"
+          }
+        ],
+        "/CloudMoviesStack/userEventFeedQueue/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "userEventFeedQueue35797794"
+          }
+        ],
+        "/CloudMoviesStack/publishEventFeedQueue/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "publishEventFeedQueueF16A58E7"
+          }
+        ],
+        "/CloudMoviesStack/publishEventFeedQueue/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "publishEventFeedQueuePolicyFBD5BB13"
+          }
+        ],
+        "/CloudMoviesStack/publishEventFeedQueue/CloudMoviesStackvideoPublishedTopic42F971A2/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "publishEventFeedQueueCloudMoviesStackvideoPublishedTopic42F971A20CAF7478"
+          }
+        ],
+        "/CloudMoviesStack/sourceUploadProcessingTopic/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "sourceUploadProcessingTopic119D2B2E"
+          }
+        ],
+        "/CloudMoviesStack/sourceUploadProcessingTopic/vuk.dimitrov@gmail.com/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "sourceUploadProcessingTopicvukdimitrovgmailcom575A62D0"
+          }
+        ],
+        "/CloudMoviesStack/videoPublishedTopic/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "videoPublishedTopic0F33FD9B"
+          }
+        ],
+        "/CloudMoviesStack/registerConfirmationTopic/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "registerConfirmationTopicEB93F8F5"
+          }
+        ],
+        "/CloudMoviesStack/utils/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "utilsF6FC768D"
+          }
+        ],
+        "/CloudMoviesStack/attachRoleLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "attachRoleLambdaServiceRole58112395"
+          }
+        ],
+        "/CloudMoviesStack/attachRoleLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "attachRoleLambda9405B926"
+          }
+        ],
+        "/CloudMoviesStack/attachRoleLambda/AllowInvoke:CloudMoviesStackregisterConfirmationTopic946C1E0B": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "attachRoleLambdaAllowInvokeCloudMoviesStackregisterConfirmationTopic946C1E0B3C58E64A"
+          }
+        ],
+        "/CloudMoviesStack/attachRoleLambda/registerConfirmationTopic/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "attachRoleLambdaregisterConfirmationTopicA38533E5"
+          }
+        ],
+        "/CloudMoviesStack/registrationConfirmationLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "registrationConfirmationLambdaServiceRoleB93B9679"
+          }
+        ],
+        "/CloudMoviesStack/registrationConfirmationLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "registrationConfirmationLambdaServiceRoleDefaultPolicyE4781B37"
+          }
+        ],
+        "/CloudMoviesStack/registrationConfirmationLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "registrationConfirmationLambda162FB2A4"
+          }
+        ],
+        "/CloudMoviesStack/moviesUserPool/PostConfirmationCognito": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesUserPoolPostConfirmationCognitoBAAA0F5C"
+          }
+        ],
+        "/CloudMoviesStack/moviesUserPool/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesUserPool80190EBD"
+          }
+        ],
+        "/CloudMoviesStack/moviesUserPool/CognitoDomain/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesUserPoolCognitoDomain3397781E"
+          }
+        ],
+        "/CloudMoviesStack/moviesUserPool/movies-client/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesUserPoolmoviesclientBBEF7921"
+          }
+        ],
+        "/CloudMoviesStack/UserRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "UserRoleB7C3739B"
+          }
+        ],
+        "/CloudMoviesStack/AdminRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AdminRole38563C57"
+          }
+        ],
+        "/CloudMoviesStack/UserGroup": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "UserGroup"
+          }
+        ],
+        "/CloudMoviesStack/AdminGroup": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AdminGroup"
+          }
+        ],
+        "/CloudMoviesStack/userpool-policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "userpoolpolicy884146CA"
+          }
+        ],
+        "/CloudMoviesStack/UserPoolId": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "UserPoolId"
+          }
+        ],
+        "/CloudMoviesStack/UserPoolClientId": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "UserPoolClientId"
+          }
+        ],
+        "/CloudMoviesStack/UserPoolDomain": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "UserPoolDomain"
+          }
+        ],
+        "/CloudMoviesStack/uploadVideoLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "uploadVideoLambdaServiceRoleC78E1897"
+          }
+        ],
+        "/CloudMoviesStack/uploadVideoLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "uploadVideoLambdaServiceRoleDefaultPolicy23702A78"
+          }
+        ],
+        "/CloudMoviesStack/uploadVideoLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "uploadVideoLambda44F7DE58"
+          }
+        ],
+        "/CloudMoviesStack/listVideosLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "listVideosLambdaServiceRole92979127"
+          }
+        ],
+        "/CloudMoviesStack/listVideosLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "listVideosLambdaServiceRoleDefaultPolicyA01EF08B"
+          }
+        ],
+        "/CloudMoviesStack/listVideosLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "listVideosLambdaF00A0031"
+          }
+        ],
+        "/CloudMoviesStack/getDetailsLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "getDetailsLambdaServiceRoleDF82AAA5"
+          }
+        ],
+        "/CloudMoviesStack/getDetailsLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "getDetailsLambdaServiceRoleDefaultPolicy979DDD3B"
+          }
+        ],
+        "/CloudMoviesStack/getDetailsLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "getDetailsLambdaD62CE019"
+          }
+        ],
+        "/CloudMoviesStack/queryVideosLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "queryVideosLambdaServiceRole0DB98760"
+          }
+        ],
+        "/CloudMoviesStack/queryVideosLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "queryVideosLambdaServiceRoleDefaultPolicy2D1CE32E"
+          }
+        ],
+        "/CloudMoviesStack/queryVideosLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "queryVideosLambda2A429330"
+          }
+        ],
+        "/CloudMoviesStack/listSubscriptionsLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "listSubscriptionsLambdaServiceRole5A82C907"
+          }
+        ],
+        "/CloudMoviesStack/listSubscriptionsLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "listSubscriptionsLambdaServiceRoleDefaultPolicyD25BC66B"
+          }
+        ],
+        "/CloudMoviesStack/listSubscriptionsLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "listSubscriptionsLambdaCF1C4AF6"
+          }
+        ],
+        "/CloudMoviesStack/streamVideoLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "streamVideoLambdaServiceRoleAF490CE6"
+          }
+        ],
+        "/CloudMoviesStack/streamVideoLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "streamVideoLambdaServiceRoleDefaultPolicyC99D1C9D"
+          }
+        ],
+        "/CloudMoviesStack/streamVideoLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "streamVideoLambda51A0F66D"
+          }
+        ],
+        "/CloudMoviesStack/subscribeLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "subscribeLambdaServiceRoleB7F31258"
+          }
+        ],
+        "/CloudMoviesStack/subscribeLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "subscribeLambdaServiceRoleDefaultPolicy768CD973"
+          }
+        ],
+        "/CloudMoviesStack/subscribeLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "subscribeLambda023905A9"
+          }
+        ],
+        "/CloudMoviesStack/unsubscribeLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "unsubscribeLambdaServiceRoleC0968C63"
+          }
+        ],
+        "/CloudMoviesStack/unsubscribeLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "unsubscribeLambdaServiceRoleDefaultPolicyB1977999"
+          }
+        ],
+        "/CloudMoviesStack/unsubscribeLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "unsubscribeLambdaF210435A"
+          }
+        ],
+        "/CloudMoviesStack/rateContentLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "rateContentLambdaServiceRole6EE1E4B5"
+          }
+        ],
+        "/CloudMoviesStack/rateContentLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "rateContentLambdaServiceRoleDefaultPolicyD43DE2F1"
+          }
+        ],
+        "/CloudMoviesStack/rateContentLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "rateContentLambdaF55611D1"
+          }
+        ],
+        "/CloudMoviesStack/authorizerLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "authorizerLambdaServiceRoleE6424CF1"
+          }
+        ],
+        "/CloudMoviesStack/authorizerLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "authorizerLambda867A4044"
+          }
+        ],
+        "/CloudMoviesStack/authorizerLambda/CloudMoviesStackCustomAuthorizer014FF649:Permissions": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "authorizerLambdaCloudMoviesStackCustomAuthorizer014FF649Permissions66E0301B"
+          }
+        ],
+        "/CloudMoviesStack/CustomAuthorizer/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomAuthorizerC8102921"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApi63300285"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApiDeployment2C689B8Cfdd83208b66299a3b7bc17aba2257e86"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/DeploymentStage.prod/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApiDeploymentStageprod986CD890"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApiEndpointAF647101"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApiOPTIONSA28FEEA1"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/content/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApicontentFB0723DA"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/content/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApicontentOPTIONS49E5F010"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/content/GET/ApiPermission.CloudMoviesStackmoviesApi4BD0D74D.GET..content": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApicontentGETApiPermissionCloudMoviesStackmoviesApi4BD0D74DGETcontent04A9822A"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/content/GET/ApiPermission.Test.CloudMoviesStackmoviesApi4BD0D74D.GET..content": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApicontentGETApiPermissionTestCloudMoviesStackmoviesApi4BD0D74DGETcontent27DA39B2"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/content/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApicontentGET45941E6B"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/content/{videoId}/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApicontentvideoIdEB6344FD"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/content/{videoId}/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApicontentvideoIdOPTIONSC3771E6C"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/content/{videoId}/GET/ApiPermission.CloudMoviesStackmoviesApi4BD0D74D.GET..content.{videoId}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApicontentvideoIdGETApiPermissionCloudMoviesStackmoviesApi4BD0D74DGETcontentvideoIdDC2DF3EF"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/content/{videoId}/GET/ApiPermission.Test.CloudMoviesStackmoviesApi4BD0D74D.GET..content.{videoId}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApicontentvideoIdGETApiPermissionTestCloudMoviesStackmoviesApi4BD0D74DGETcontentvideoId3EC4C688"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/content/{videoId}/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApicontentvideoIdGET16F8963E"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/content/{videoId}/PUT/ApiPermission.CloudMoviesStackmoviesApi4BD0D74D.PUT..content.{videoId}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApicontentvideoIdPUTApiPermissionCloudMoviesStackmoviesApi4BD0D74DPUTcontentvideoId4463EC20"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/content/{videoId}/PUT/ApiPermission.Test.CloudMoviesStackmoviesApi4BD0D74D.PUT..content.{videoId}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApicontentvideoIdPUTApiPermissionTestCloudMoviesStackmoviesApi4BD0D74DPUTcontentvideoId07C18289"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/content/{videoId}/PUT/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApicontentvideoIdPUTA295938E"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/content/feed/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApicontentfeedA21E8C27"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/content/feed/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApicontentfeedOPTIONS65008C07"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/content/feed/{userId}/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApicontentfeeduserIdF81C250F"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/content/feed/{userId}/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApicontentfeeduserIdOPTIONS7B673E4C"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/content/feed/{userId}/GET/ApiPermission.CloudMoviesStackmoviesApi4BD0D74D.GET..content.feed.{userId}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApicontentfeeduserIdGETApiPermissionCloudMoviesStackmoviesApi4BD0D74DGETcontentfeeduserIdFE5E91D8"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/content/feed/{userId}/GET/ApiPermission.Test.CloudMoviesStackmoviesApi4BD0D74D.GET..content.feed.{userId}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApicontentfeeduserIdGETApiPermissionTestCloudMoviesStackmoviesApi4BD0D74DGETcontentfeeduserId013FACD7"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/content/feed/{userId}/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApicontentfeeduserIdGETC9727A17"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/video/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApivideo4B32D44F"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/video/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApivideoOPTIONS009A17A7"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/video/query/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApivideoquery940AF055"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/video/query/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApivideoqueryOPTIONS21E9C661"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/video/query/{query}/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApivideoqueryquery639BAB39"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/video/query/{query}/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApivideoqueryqueryOPTIONS70F6377A"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/video/query/{query}/GET/ApiPermission.CloudMoviesStackmoviesApi4BD0D74D.GET..video.query.{query}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApivideoqueryqueryGETApiPermissionCloudMoviesStackmoviesApi4BD0D74DGETvideoqueryquery4CDF13F1"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/video/query/{query}/GET/ApiPermission.Test.CloudMoviesStackmoviesApi4BD0D74D.GET..video.query.{query}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApivideoqueryqueryGETApiPermissionTestCloudMoviesStackmoviesApi4BD0D74DGETvideoqueryqueryBF899F91"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/video/query/{query}/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApivideoqueryqueryGETEB3ACAB9"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/video/{videoId}/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApivideovideoId4A6DD8E6"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/video/{videoId}/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApivideovideoIdOPTIONS50EB454C"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/video/{videoId}/{resolution}/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApivideovideoIdresolutionDE703279"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/video/{videoId}/{resolution}/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApivideovideoIdresolutionOPTIONS92D30042"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/video/{videoId}/{resolution}/GET/ApiPermission.CloudMoviesStackmoviesApi4BD0D74D.GET..video.{videoId}.{resolution}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApivideovideoIdresolutionGETApiPermissionCloudMoviesStackmoviesApi4BD0D74DGETvideovideoIdresolutionB192F430"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/video/{videoId}/{resolution}/GET/ApiPermission.Test.CloudMoviesStackmoviesApi4BD0D74D.GET..video.{videoId}.{resolution}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApivideovideoIdresolutionGETApiPermissionTestCloudMoviesStackmoviesApi4BD0D74DGETvideovideoIdresolutionF1DCB134"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/video/{videoId}/{resolution}/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApivideovideoIdresolutionGET7CB14CD9"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/movie/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApimovieB0D0B90A"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/movie/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApimovieOPTIONS5149EE45"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/movie/{movieId}/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApimoviemovieId8EABDBED"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/movie/{movieId}/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApimoviemovieIdOPTIONSDF54B39E"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/movie/{movieId}/DELETE/ApiPermission.CloudMoviesStackmoviesApi4BD0D74D.DELETE..movie.{movieId}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApimoviemovieIdDELETEApiPermissionCloudMoviesStackmoviesApi4BD0D74DDELETEmoviemovieIdEDD02E44"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/movie/{movieId}/DELETE/ApiPermission.Test.CloudMoviesStackmoviesApi4BD0D74D.DELETE..movie.{movieId}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApimoviemovieIdDELETEApiPermissionTestCloudMoviesStackmoviesApi4BD0D74DDELETEmoviemovieId8E0BA25A"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/movie/{movieId}/DELETE/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApimoviemovieIdDELETE0CC0352C"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowA3270F35"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowOPTIONS714FED4C"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdD94F986F"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdOPTIONSA5394DEA"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/{season}/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdseasonDF459793"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/{season}/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdseasonOPTIONS5848F796"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/{season}/{episode}/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdseasonepisodeBFC2346E"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/{season}/{episode}/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdseasonepisodeOPTIONS77EAF564"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/{season}/{episode}/GET/ApiPermission.CloudMoviesStackmoviesApi4BD0D74D.GET..show.{showId}.{season}.{episode}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdseasonepisodeGETApiPermissionCloudMoviesStackmoviesApi4BD0D74DGETshowshowIdseasonepisodeA7B14223"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/{season}/{episode}/GET/ApiPermission.Test.CloudMoviesStackmoviesApi4BD0D74D.GET..show.{showId}.{season}.{episode}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdseasonepisodeGETApiPermissionTestCloudMoviesStackmoviesApi4BD0D74DGETshowshowIdseasonepisodeC9D85EC8"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/{season}/{episode}/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdseasonepisodeGET0EA1C64D"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/{season}/{episode}/DELETE/ApiPermission.CloudMoviesStackmoviesApi4BD0D74D.DELETE..show.{showId}.{season}.{episode}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdseasonepisodeDELETEApiPermissionCloudMoviesStackmoviesApi4BD0D74DDELETEshowshowIdseasonepisode6133A190"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/{season}/{episode}/DELETE/ApiPermission.Test.CloudMoviesStackmoviesApi4BD0D74D.DELETE..show.{showId}.{season}.{episode}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdseasonepisodeDELETEApiPermissionTestCloudMoviesStackmoviesApi4BD0D74DDELETEshowshowIdseasonepisodeDAA5ADF5"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/{season}/{episode}/DELETE/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdseasonepisodeDELETE2E623C0C"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/{season}/PUT/ApiPermission.CloudMoviesStackmoviesApi4BD0D74D.PUT..show.{showId}.{season}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdseasonPUTApiPermissionCloudMoviesStackmoviesApi4BD0D74DPUTshowshowIdseason20BE7E82"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/{season}/PUT/ApiPermission.Test.CloudMoviesStackmoviesApi4BD0D74D.PUT..show.{showId}.{season}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdseasonPUTApiPermissionTestCloudMoviesStackmoviesApi4BD0D74DPUTshowshowIdseasonAB2B1867"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/{season}/PUT/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdseasonPUTF9DE7D68"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/{season}/DELETE/ApiPermission.CloudMoviesStackmoviesApi4BD0D74D.DELETE..show.{showId}.{season}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdseasonDELETEApiPermissionCloudMoviesStackmoviesApi4BD0D74DDELETEshowshowIdseasonEF4C9F96"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/{season}/DELETE/ApiPermission.Test.CloudMoviesStackmoviesApi4BD0D74D.DELETE..show.{showId}.{season}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdseasonDELETEApiPermissionTestCloudMoviesStackmoviesApi4BD0D74DDELETEshowshowIdseason8576542C"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/{season}/DELETE/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdseasonDELETEC74342C9"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/seasonDetails/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdseasonDetailsE1041397"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/seasonDetails/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdseasonDetailsOPTIONSE52E8D4B"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/seasonDetails/GET/ApiPermission.CloudMoviesStackmoviesApi4BD0D74D.GET..show.{showId}.seasonDetails": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdseasonDetailsGETApiPermissionCloudMoviesStackmoviesApi4BD0D74DGETshowshowIdseasonDetails71937A4B"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/seasonDetails/GET/ApiPermission.Test.CloudMoviesStackmoviesApi4BD0D74D.GET..show.{showId}.seasonDetails": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdseasonDetailsGETApiPermissionTestCloudMoviesStackmoviesApi4BD0D74DGETshowshowIdseasonDetails42F60C0F"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/seasonDetails/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdseasonDetailsGETB28C49BB"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/POST/ApiPermission.CloudMoviesStackmoviesApi4BD0D74D.POST..show.{showId}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdPOSTApiPermissionCloudMoviesStackmoviesApi4BD0D74DPOSTshowshowIdBA8C7F99"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/POST/ApiPermission.Test.CloudMoviesStackmoviesApi4BD0D74D.POST..show.{showId}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdPOSTApiPermissionTestCloudMoviesStackmoviesApi4BD0D74DPOSTshowshowId21DF8E71"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdPOSTDD9DFD39"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/DELETE/ApiPermission.CloudMoviesStackmoviesApi4BD0D74D.DELETE..show.{showId}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdDELETEApiPermissionCloudMoviesStackmoviesApi4BD0D74DDELETEshowshowIdD2167CC2"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/DELETE/ApiPermission.Test.CloudMoviesStackmoviesApi4BD0D74D.DELETE..show.{showId}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdDELETEApiPermissionTestCloudMoviesStackmoviesApi4BD0D74DDELETEshowshowId3DA85A8C"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/{showId}/DELETE/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowshowIdDELETEC7CF0ABD"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/POST/ApiPermission.CloudMoviesStackmoviesApi4BD0D74D.POST..show": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowPOSTApiPermissionCloudMoviesStackmoviesApi4BD0D74DPOSTshowABD433A1"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/POST/ApiPermission.Test.CloudMoviesStackmoviesApi4BD0D74D.POST..show": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowPOSTApiPermissionTestCloudMoviesStackmoviesApi4BD0D74DPOSTshow5A39705E"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/show/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApishowPOST1BE1664D"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/subscription/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApisubscription33C4F466"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/subscription/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApisubscriptionOPTIONS08D493E4"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/subscription/{userId}/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApisubscriptionuserIdF4B7986A"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/subscription/{userId}/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApisubscriptionuserIdOPTIONS1C7FDA72"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/subscription/{userId}/GET/ApiPermission.CloudMoviesStackmoviesApi4BD0D74D.GET..subscription.{userId}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApisubscriptionuserIdGETApiPermissionCloudMoviesStackmoviesApi4BD0D74DGETsubscriptionuserId357DA0DC"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/subscription/{userId}/GET/ApiPermission.Test.CloudMoviesStackmoviesApi4BD0D74D.GET..subscription.{userId}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApisubscriptionuserIdGETApiPermissionTestCloudMoviesStackmoviesApi4BD0D74DGETsubscriptionuserId63E0002B"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/subscription/{userId}/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApisubscriptionuserIdGETA718A030"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/subscription/{userId}/POST/ApiPermission.CloudMoviesStackmoviesApi4BD0D74D.POST..subscription.{userId}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApisubscriptionuserIdPOSTApiPermissionCloudMoviesStackmoviesApi4BD0D74DPOSTsubscriptionuserId75A3425F"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/subscription/{userId}/POST/ApiPermission.Test.CloudMoviesStackmoviesApi4BD0D74D.POST..subscription.{userId}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApisubscriptionuserIdPOSTApiPermissionTestCloudMoviesStackmoviesApi4BD0D74DPOSTsubscriptionuserIdCA81AABE"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/subscription/{userId}/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApisubscriptionuserIdPOSTE900F3E2"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/subscription/{userId}/{type}/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApisubscriptionuserIdtype845CD63B"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/subscription/{userId}/{type}/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApisubscriptionuserIdtypeOPTIONS4CE01002"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/subscription/{userId}/{type}/{name}/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApisubscriptionuserIdtypename702EFD8F"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/subscription/{userId}/{type}/{name}/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApisubscriptionuserIdtypenameOPTIONS1884F479"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/subscription/{userId}/{type}/{name}/DELETE/ApiPermission.CloudMoviesStackmoviesApi4BD0D74D.DELETE..subscription.{userId}.{type}.{name}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApisubscriptionuserIdtypenameDELETEApiPermissionCloudMoviesStackmoviesApi4BD0D74DDELETEsubscriptionuserIdtypename696C5B8C"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/subscription/{userId}/{type}/{name}/DELETE/ApiPermission.Test.CloudMoviesStackmoviesApi4BD0D74D.DELETE..subscription.{userId}.{type}.{name}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApisubscriptionuserIdtypenameDELETEApiPermissionTestCloudMoviesStackmoviesApi4BD0D74DDELETEsubscriptionuserIdtypename0B1AE39E"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/subscription/{userId}/{type}/{name}/DELETE/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApisubscriptionuserIdtypenameDELETEDA8B2FCB"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/ratings/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApiratings8810C690"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/ratings/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApiratingsOPTIONSC4C4341C"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/ratings/{user_id}/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApiratingsuserid66DBEAA9"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/ratings/{user_id}/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApiratingsuseridOPTIONS613B05F6"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/ratings/{user_id}/POST/ApiPermission.CloudMoviesStackmoviesApi4BD0D74D.POST..ratings.{user_id}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApiratingsuseridPOSTApiPermissionCloudMoviesStackmoviesApi4BD0D74DPOSTratingsuserid9E1FAD17"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/ratings/{user_id}/POST/ApiPermission.Test.CloudMoviesStackmoviesApi4BD0D74D.POST..ratings.{user_id}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApiratingsuseridPOSTApiPermissionTestCloudMoviesStackmoviesApi4BD0D74DPOSTratingsuseridBB44BA88"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/ratings/{user_id}/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApiratingsuseridPOST8285EFF5"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/upload/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApiupload4C057A87"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/upload/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApiuploadOPTIONSD1729757"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/upload/GET/ApiPermission.CloudMoviesStackmoviesApi4BD0D74D.GET..upload": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApiuploadGETApiPermissionCloudMoviesStackmoviesApi4BD0D74DGETupload55571CFE"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/upload/GET/ApiPermission.Test.CloudMoviesStackmoviesApi4BD0D74D.GET..upload": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApiuploadGETApiPermissionTestCloudMoviesStackmoviesApi4BD0D74DGETupload8DAD21E0"
+          }
+        ],
+        "/CloudMoviesStack/moviesApi/Default/upload/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "moviesApiuploadGET869EC398"
+          }
+        ],
+        "/CloudMoviesStack/getSeasonsDetailsLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "getSeasonsDetailsLambdaServiceRole57C5577D"
+          }
+        ],
+        "/CloudMoviesStack/getSeasonsDetailsLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "getSeasonsDetailsLambdaServiceRoleDefaultPolicy7CA9C367"
+          }
+        ],
+        "/CloudMoviesStack/getSeasonsDetailsLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "getSeasonsDetailsLambda73515D71"
+          }
+        ],
+        "/CloudMoviesStack/getEpisodeDetailsLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "getEpisodeDetailsLambdaServiceRole4EDAC85E"
+          }
+        ],
+        "/CloudMoviesStack/getEpisodeDetailsLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "getEpisodeDetailsLambdaServiceRoleDefaultPolicyF281FC65"
+          }
+        ],
+        "/CloudMoviesStack/getEpisodeDetailsLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "getEpisodeDetailsLambdaF0EDC814"
+          }
+        ],
+        "/CloudMoviesStack/createShowLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "createShowLambdaServiceRoleB610ADA4"
+          }
+        ],
+        "/CloudMoviesStack/createShowLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "createShowLambdaServiceRoleDefaultPolicy1E2158A5"
+          }
+        ],
+        "/CloudMoviesStack/createShowLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "createShowLambda64A8046E"
+          }
+        ],
+        "/CloudMoviesStack/createSeasonLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "createSeasonLambdaServiceRole7234FCF8"
+          }
+        ],
+        "/CloudMoviesStack/createSeasonLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "createSeasonLambdaServiceRoleDefaultPolicyE5AB1EC8"
+          }
+        ],
+        "/CloudMoviesStack/createSeasonLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "createSeasonLambdaB8377D0D"
+          }
+        ],
+        "/CloudMoviesStack/editDetailsLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "editDetailsLambdaServiceRole1AFC67A8"
+          }
+        ],
+        "/CloudMoviesStack/editDetailsLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "editDetailsLambdaServiceRoleDefaultPolicy4BA15104"
+          }
+        ],
+        "/CloudMoviesStack/editDetailsLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "editDetailsLambda56648A07"
+          }
+        ],
+        "/CloudMoviesStack/editEpisodeLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "editEpisodeLambdaServiceRoleBF877A38"
+          }
+        ],
+        "/CloudMoviesStack/editEpisodeLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "editEpisodeLambdaServiceRoleDefaultPolicyD62A0672"
+          }
+        ],
+        "/CloudMoviesStack/editEpisodeLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "editEpisodeLambdaD97CF2B4"
+          }
+        ],
+        "/CloudMoviesStack/deleteShowLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "deleteShowLambdaServiceRole91DBB5FC"
+          }
+        ],
+        "/CloudMoviesStack/deleteShowLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "deleteShowLambdaServiceRoleDefaultPolicy7DC4F099"
+          }
+        ],
+        "/CloudMoviesStack/deleteShowLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "deleteShowLambdaDE5B7ABF"
+          }
+        ],
+        "/CloudMoviesStack/deleteSeasonLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "deleteSeasonLambdaServiceRoleDAA94112"
+          }
+        ],
+        "/CloudMoviesStack/deleteSeasonLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "deleteSeasonLambdaServiceRoleDefaultPolicyF52D2B58"
+          }
+        ],
+        "/CloudMoviesStack/deleteSeasonLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "deleteSeasonLambda85B56115"
+          }
+        ],
+        "/CloudMoviesStack/deleteEpisodeLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "deleteEpisodeLambdaServiceRole93483ADD"
+          }
+        ],
+        "/CloudMoviesStack/deleteEpisodeLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "deleteEpisodeLambdaServiceRoleDefaultPolicy2891B7B0"
+          }
+        ],
+        "/CloudMoviesStack/deleteEpisodeLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "deleteEpisodeLambda5735F8A0"
+          }
+        ],
+        "/CloudMoviesStack/deleteMovieLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "deleteMovieLambdaServiceRole18A98B24"
+          }
+        ],
+        "/CloudMoviesStack/deleteMovieLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "deleteMovieLambdaServiceRoleDefaultPolicy9A6A0C78"
+          }
+        ],
+        "/CloudMoviesStack/deleteMovieLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "deleteMovieLambda63D1CEAD"
+          }
+        ],
+        "/CloudMoviesStack/getFeedLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "getFeedLambdaServiceRole581C19F8"
+          }
+        ],
+        "/CloudMoviesStack/getFeedLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "getFeedLambdaServiceRoleDefaultPolicyD682A319"
+          }
+        ],
+        "/CloudMoviesStack/getFeedLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "getFeedLambdaB4EE3C95"
+          }
+        ],
+        "/CloudMoviesStack/unzipvideolambdaLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "unzipvideolambdaLambdaServiceRoleE83CCEB3"
+          }
+        ],
+        "/CloudMoviesStack/unzipvideolambdaLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "unzipvideolambdaLambdaServiceRoleDefaultPolicy09D6CAF8"
+          }
+        ],
+        "/CloudMoviesStack/unzipvideolambdaLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "unzipvideolambdaLambda21A9B6C9"
+          }
+        ],
+        "/CloudMoviesStack/BucketNotificationsHandler050a0587b7544547bf325f094a3db834/Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BucketNotificationsHandler050a0587b7544547bf325f094a3db834RoleB6FB88EC"
+          }
+        ],
+        "/CloudMoviesStack/BucketNotificationsHandler050a0587b7544547bf325f094a3db834/Role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BucketNotificationsHandler050a0587b7544547bf325f094a3db834RoleDefaultPolicy2CF63D36"
+          }
+        ],
+        "/CloudMoviesStack/BucketNotificationsHandler050a0587b7544547bf325f094a3db834/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BucketNotificationsHandler050a0587b7544547bf325f094a3db8347ECC3691"
+          }
+        ],
+        "/CloudMoviesStack/ffmpegLayer/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ffmpegLayerE970AD5E"
+          }
+        ],
+        "/CloudMoviesStack/transcodevideolambdaLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "transcodevideolambdaLambdaServiceRole49831FF4"
+          }
+        ],
+        "/CloudMoviesStack/transcodevideolambdaLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "transcodevideolambdaLambdaServiceRoleDefaultPolicyF686B00A"
+          }
+        ],
+        "/CloudMoviesStack/transcodevideolambdaLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "transcodevideolambdaLambda131AAF32"
+          }
+        ],
+        "/CloudMoviesStack/transcodingStateMachine/Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "transcodingStateMachineRole3CDDD4E2"
+          }
+        ],
+        "/CloudMoviesStack/transcodingStateMachine/Role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "transcodingStateMachineRoleDefaultPolicy71D5302A"
+          }
+        ],
+        "/CloudMoviesStack/transcodingStateMachine/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "transcodingStateMachine0BE86125"
+          }
+        ],
+        "/CloudMoviesStack/starttranscodinglambdaLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "starttranscodinglambdaLambdaServiceRole7F9B7DD2"
+          }
+        ],
+        "/CloudMoviesStack/starttranscodinglambdaLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "starttranscodinglambdaLambdaServiceRoleDefaultPolicy246A74A0"
+          }
+        ],
+        "/CloudMoviesStack/starttranscodinglambdaLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "starttranscodinglambdaLambda5DD0E2FB"
+          }
+        ],
+        "/CloudMoviesStack/handleProcessingResultLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "handleProcessingResultLambdaServiceRole1E231D03"
+          }
+        ],
+        "/CloudMoviesStack/handleProcessingResultLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "handleProcessingResultLambdaServiceRoleDefaultPolicy9B5B03E7"
+          }
+        ],
+        "/CloudMoviesStack/handleProcessingResultLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "handleProcessingResultLambda73BFA016"
+          }
+        ],
+        "/CloudMoviesStack/handleProcessingResultLambda/AllowInvoke:CloudMoviesStacksourceUploadProcessingTopicC8A49003": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "handleProcessingResultLambdaAllowInvokeCloudMoviesStacksourceUploadProcessingTopicC8A49003D232B7BD"
+          }
+        ],
+        "/CloudMoviesStack/handleProcessingResultLambda/sourceUploadProcessingTopic/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "handleProcessingResultLambdasourceUploadProcessingTopicC7D3D1FB"
+          }
+        ],
+        "/CloudMoviesStack/notifySubscribersLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "notifySubscribersLambdaServiceRole18CA8BD6"
+          }
+        ],
+        "/CloudMoviesStack/notifySubscribersLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "notifySubscribersLambdaServiceRoleDefaultPolicy053ACCC4"
+          }
+        ],
+        "/CloudMoviesStack/notifySubscribersLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "notifySubscribersLambda728C006F"
+          }
+        ],
+        "/CloudMoviesStack/notifySubscribersLambda/AllowInvoke:CloudMoviesStackvideoPublishedTopic42F971A2": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "notifySubscribersLambdaAllowInvokeCloudMoviesStackvideoPublishedTopic42F971A2EBF9B1B8"
+          }
+        ],
+        "/CloudMoviesStack/notifySubscribersLambda/videoPublishedTopic/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "notifySubscribersLambdavideoPublishedTopic8744DE0B"
+          }
+        ],
+        "/CloudMoviesStack/createUserFeedLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "createUserFeedLambdaServiceRoleE1A60815"
+          }
+        ],
+        "/CloudMoviesStack/createUserFeedLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "createUserFeedLambdaServiceRoleDefaultPolicy0E6F2890"
+          }
+        ],
+        "/CloudMoviesStack/createUserFeedLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "createUserFeedLambdaD7C2905C"
+          }
+        ],
+        "/CloudMoviesStack/createUserFeedLambda/AllowInvoke:CloudMoviesStackregisterConfirmationTopic946C1E0B": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "createUserFeedLambdaAllowInvokeCloudMoviesStackregisterConfirmationTopic946C1E0BE21F71E7"
+          }
+        ],
+        "/CloudMoviesStack/createUserFeedLambda/registerConfirmationTopic/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "createUserFeedLambdaregisterConfirmationTopicC8ECE8EB"
+          }
+        ],
+        "/CloudMoviesStack/userUpdateFeedLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "userUpdateFeedLambdaServiceRole15CF3A26"
+          }
+        ],
+        "/CloudMoviesStack/userUpdateFeedLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "userUpdateFeedLambdaServiceRoleDefaultPolicy08B4A744"
+          }
+        ],
+        "/CloudMoviesStack/userUpdateFeedLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "userUpdateFeedLambdaCA6766D6"
+          }
+        ],
+        "/CloudMoviesStack/userUpdateFeedLambda/userEventFeedSource/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "userUpdateFeedLambdauserEventFeedSource18724A26"
+          }
+        ],
+        "/CloudMoviesStack/publishUpdateFeedLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "publishUpdateFeedLambdaServiceRole63A4A808"
+          }
+        ],
+        "/CloudMoviesStack/publishUpdateFeedLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "publishUpdateFeedLambdaServiceRoleDefaultPolicyF1CE9110"
+          }
+        ],
+        "/CloudMoviesStack/publishUpdateFeedLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "publishUpdateFeedLambda0D7129F3"
+          }
+        ],
+        "/CloudMoviesStack/publishUpdateFeedLambda/publishEventFeedSource/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "publishUpdateFeedLambdapublishEventFeedSourceC6CF1A54"
+          }
+        ],
+        "/CloudMoviesStack/videosFeedPipeRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "videosFeedPipeRoleBC0EBD5F"
+          }
+        ],
+        "/CloudMoviesStack/videosFeedPipe": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "videosFeedPipe"
+          }
+        ],
+        "/CloudMoviesStack/subscriptionsFeedPipeRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "subscriptionsFeedPipeRole2D8B4D76"
+          }
+        ],
+        "/CloudMoviesStack/subscriptionsFeedPipe": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "subscriptionsFeedPipe"
+          }
+        ],
+        "/CloudMoviesStack/ratingsFeedPipeRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ratingsFeedPipeRole54FCC01D"
+          }
+        ],
+        "/CloudMoviesStack/ratingsFeedPipe": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ratingsFeedPipe"
+          }
+        ],
+        "/CloudMoviesStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/CloudMoviesStack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/CloudMoviesStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/CloudMoviesStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "CloudMoviesStack"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}
