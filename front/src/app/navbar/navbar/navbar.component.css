@@ -1,0 +1,32 @@
+.logo {
+  cursor: pointer;
+  margin-left: 2rem;
+  font-size: 1.8rem;
+  color: whitesmoke;
+  text-shadow: 1px 1px 4px #2c2c2c;
+}
+
+mat-toolbar {
+  color: whitesmoke;
+  background-color: #2E294E;
+  position: fixed;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(44, 44, 44, 0.1);
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+a[mat-button] {
+  height: auto;
+  color: whitesmoke;
+  font-size: 1.4rem;
+  text-shadow: 1px 1px 4px #2c2c2c;
+  padding: 0.5rem;
+}
+
+a:last-child {
+  margin-left: 2rem;
+  text-decoration: underline;
+}

@@ -1,0 +1,199 @@
+#main {
+  background-size: auto;
+  background-position: center top;
+  background-repeat: no-repeat;
+  padding-top: 4rem;
+  width: 100%;
+  overflow-x: hidden;
+  min-height: 93vh;
+}
+
+h3 {
+  color: #1a9094;
+  margin-bottom: 3rem;
+}
+
+#search-bar {
+  display: flex;
+  margin: 4rem auto 1rem auto;
+  width: 50vw;
+  color: whitesmoke;
+}
+
+.search-field {
+  flex: 1;
+  margin-right: 2rem;
+  color: whitesmoke;
+}
+
+.button-regular {
+  margin-top: 4px;
+  width: 3rem;
+  height: 3rem;
+  background-color: #2E294E;
+  color: whitesmoke;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.button-regular:hover {
+  background-color: rgba(46, 41, 78, 0.8);
+}
+
+.card {
+  width: 100%;
+  background-color: rgb(34, 34, 34);
+  border: 2px solid rgba(46, 41, 78, 0.5);
+  box-shadow: 0 0 5px rgba(46, 41, 78, 0.4);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  max-width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.series-card {
+  background-color: rgb(56, 56, 56);
+  border: 2px solid rgba(46, 41, 78, 0.5);
+  box-shadow: 0 0 5px rgba(46, 41, 78, 0.4);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  max-width: 100%;
+}
+
+.series-card h2 {
+  cursor: default;
+}
+
+.card h2 {
+  font-size: 2.5rem;
+  color: whitesmoke;
+}
+
+.card p {
+  color: darkgray;
+  font-size: 1.1rem;
+}
+
+.card span {
+  color: #2E294E;
+}
+
+.card:hover {
+
+  cursor: pointer;
+  transform: translateX(15px);
+}
+
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+}
+
+.genres-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+.genre {
+  height: min-content;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: #333333;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-right: 0.5rem;
+  margin-bottom: 0.7rem;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 4rem 10rem 4rem 10rem;
+}
+
+
+.container > * {
+  flex: 0 0 calc(33.33% - 20px);
+  margin: 0 1rem 2rem 0;
+  box-sizing: border-box;
+}
+
+.container::after {
+  content: "";
+  flex: auto;
+}
+
+@media (max-width: 768px) {
+  .container > * {
+    flex-basis: calc(50% - 20px);
+  }
+}
+
+.inline {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tabs {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-left: 25%;
+}
+
+.tabs-admin {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-top: 4rem;
+  margin-left: 10rem;
+}
+
+.tabs h6,
+.tabs-admin h6 {
+  color: whitesmoke;
+  margin-right: 2rem;
+  margin-bottom: 0;
+  cursor: default;
+}
+
+.tab {
+  background-color: transparent;
+  color: whitesmoke;
+  border: none;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.tab.active {
+  display: block;
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.tab:hover {
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.series-name {
+  margin-top: 2rem;
+  text-align: center;
+  color: whitesmoke;
+}
+
+.series-title {
+  height: 3rem;
+  width: 100%;
+}

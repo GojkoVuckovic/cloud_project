@@ -1,0 +1,8 @@
+<mat-toolbar>
+  <span routerLink="/" class="logo">Videoss</span>
+  <span class="spacer"></span>
+  <a routerLink="/search" mat-button>Home</a>
+  <app-navbar-admin *ngIf="role==='Admin'"></app-navbar-admin>
+  <app-navbar-user *ngIf="role==='RegularUser'"></app-navbar-user>
+  <a mat-button (click)="logout()">Logout</a>
+</mat-toolbar>

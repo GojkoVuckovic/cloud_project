@@ -1,0 +1,27 @@
+<div id="main">
+  <div class="tabs">
+    <h6>Filter:</h6>
+    <button class="tab" [ngClass]="{'active': activeTab === 'movies'}" (click)="setActiveTab('movies')">Movies</button>
+    <button class="tab" [ngClass]="{'active': activeTab === 'series'}" style="margin-left: 1.5rem"
+            (click)="setActiveTab('series')">Shows
+    </button>
+  </div>
+
+  <div class="container-new">
+    <div class="container">
+      <div (click)="onCardClick(movie.id)" *ngFor="let movie of shownMovies" [ngClass]="movie.displaySeries ? 'series-card' : 'card'">
+        <div *ngIf="movie.displaySeries">
+          <h2 class="series-name">{{ movie.series }}</h2>
+        </div>
+        <div *ngIf="!movie.displaySeries">
+          <div class="inline">
+            <h2>{{ movie.title }}</h2>
+          </div>
+          <div class="genres-container">
+            <p>{{ movie.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
