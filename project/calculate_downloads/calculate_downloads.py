@@ -4,7 +4,7 @@ def calculate_downloads(event, context):
 
     download_score = 0
     for genres in downloaded_genres[-3:]:
-        download_score = download_score/2 + len(set(genres) & movie_genres) * 3
+        download_score = len(set(genres) & movie_genres) * 5
 
     return {
         'download_score': download_score,
